@@ -1,0 +1,1978 @@
+/* ============================================================
+   LIFE Hospitality — Direct Booking
+   Design tokens - Traveloka Aesthetic
+   ============================================================ */
+:root {
+  --traveloka-blue: #C5A059; /* Soft Gold */
+  --traveloka-blue-dark: #9E7D3B; /* Dark Gold for contrast */
+  --traveloka-blue-light: #F7F4EB; /* Soft Cream/Light Gold */
+  --traveloka-orange: #FF5E1F;
+  --traveloka-orange-hover: #E04F16;
+  --traveloka-yellow: #FFB703;
+  --bg-gray: #F2F3F3;
+  --white: #FFFFFF;
+  --text-dark: #1E293B;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  --success-green: #03A96B;
+  --success-green-light: #E6F6F0;
+  
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --radius-standard: 8px;
+  --radius-large: 12px;
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg-gray);
+  color:var(--text-dark);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+input{font-family:inherit;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+/* ============ BUTTONS ============ */
+.btn{
+  border:none;
+  border-radius:var(--radius-standard);
+  padding:12px 24px;
+  font-weight:700;
+  font-size:15px;
+  transition:background-color .15s ease, transform .1s ease;
+}
+.btn--primary{
+  background:var(--traveloka-orange);
+  color:var(--white);
+}
+.btn--primary:hover{ background:var(--traveloka-orange-hover); }
+.btn--primary:active{ transform:scale(0.98); }
+.btn--block{ width:100%; }
+
+/* ============ TOPBAR ============ */
+.topbar {
+  background: var(--traveloka-blue);
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.topbar__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand__logo-wrapper {
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.brand__logo-img {
+  width: 100%;
+  height: 155%;
+  object-fit: cover;
+  object-position: top center;
+  filter: brightness(0) invert(1);
+}
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.brand__title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+.brand__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.topbar__tag {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(180deg, rgba(30, 26, 20, 0.4) 0%, rgba(20, 16, 10, 0.85) 100%), url('hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  color: var(--white);
+  padding: 64px 24px 80px;
+  position: relative;
+}
+.hero__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--traveloka-yellow);
+  font-weight: 600;
+  margin: 0 0 10px;
+  opacity: 0.9;
+}
+.hero__title {
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.35;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  letter-spacing: -0.01em;
+}
+.hero__sub {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ============ SEARCH CONTAINER & TABS (Traveloka layout) ============ */
+.search-container {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: left;
+}
+.search-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.search-tab {
+  background: rgba(14, 30, 48, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.search-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.search-tab.active {
+  background: var(--traveloka-blue);
+  border-color: var(--traveloka-blue);
+  color: var(--white);
+}
+
+.search-labels {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 1fr 56px;
+  gap: 8px;
+  padding: 0 16px;
+  margin-bottom: 6px;
+}
+.search-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.searchbar {
+  background: var(--white);
+  border-radius: var(--radius-large);
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 1fr auto;
+  align-items: center;
+  padding: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+.searchbar__field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  position: relative;
+  height: 100%;
+}
+.searchbar__field:not(:nth-last-child(2))::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background-color: var(--border-color);
+}
+.searchbar__icon {
+  font-size: 20px;
+  color: var(--traveloka-blue);
+  flex-shrink: 0;
+}
+.searchbar__field input {
+  border: none;
+  font-size: 14px;
+  color: var(--text-dark);
+  font-weight: 600;
+  background: transparent;
+  width: 100%;
+}
+.searchbar__field input:focus {
+  outline: none;
+}
+.searchbar__field:focus-within {
+  background: var(--traveloka-blue-light);
+  border-radius: var(--radius-standard);
+}
+.date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+.date-inputs input[type="date"] {
+  width: auto;
+  flex: 1;
+}
+.date-sep {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+.searchbar__btn {
+  background: var(--traveloka-orange);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-standard);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+  margin: 2px;
+}
+.searchbar__btn:hover {
+  background: var(--traveloka-orange-hover);
+}
+.searchbar__btn:active {
+  transform: scale(0.95);
+}
+.hero__nights {
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--traveloka-yellow);
+  font-weight: 600;
+  min-height: 18px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ============ RESULTS ============ */
+.results {
+  padding: 40px 24px 24px;
+}
+.results__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.results__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.results__head h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+.results__count {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hotel-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ============ HOTEL CARD (Traveloka Row Design) ============ */
+.hotel-card {
+  background: var(--white);
+  border-radius: var(--radius-standard);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 260px 1fr 220px;
+  border: 1px solid var(--border-color);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.hotel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Gallery column */
+.hotel-card__gallery {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hotel-card__media {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: var(--radius-standard);
+  overflow: hidden;
+  background: #e2e8f0;
+}
+.hotel-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hotel-card__badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--success-green-light);
+  color: var(--success-green);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+  z-index: 2;
+}
+.hotel-card__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+.hotel-card__thumb {
+  aspect-ratio: 16/10;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #cbd5e1;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.hotel-card__thumb:hover {
+  transform: translateY(-1px);
+}
+.hotel-card__thumb.active {
+  border-color: var(--traveloka-blue);
+}
+.hotel-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hotel-card__thumb--more {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Content column */
+.hotel-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hotel-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.hotel-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hotel-card__shield {
+  font-size: 16px;
+}
+.hotel-card__name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.3;
+}
+.hotel-card__rating-block {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.2;
+}
+.hotel-card__score {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--traveloka-blue);
+}
+.hotel-card__rating-desc {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--traveloka-blue);
+}
+.hotel-card__reviews {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.hotel-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hotel-card__type-badge {
+  background: var(--traveloka-blue-light);
+  color: var(--traveloka-blue-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.hotel-card__stars {
+  color: var(--traveloka-yellow);
+  font-size: 12px;
+  letter-spacing: -1px;
+}
+
+.hotel-card__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.hotel-card__location-pin {
+  color: var(--text-muted);
+}
+.hotel-card__location-sep {
+  color: var(--border-color);
+}
+
+.hotel-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.hotel-card__tag-best {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(1, 148, 243, 0.4);
+  background: rgba(1, 148, 243, 0.05);
+  color: var(--traveloka-blue-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+.hotel-card__tag-thumb {
+  font-size: 11px;
+}
+.hotel-card__tag-facility {
+  background: var(--bg-gray);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Pricing Column */
+.hotel-card__action-panel {
+  padding: 16px;
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: #fafafa;
+}
+.hotel-card__promo-login {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--success-green-light);
+  color: var(--success-green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: auto;
+}
+.hotel-card__promo-icon {
+  font-size: 11px;
+}
+.hotel-card__price-original {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+.hotel-card__price-promo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--traveloka-orange);
+  line-height: 1.1;
+}
+.hotel-card__price-suffix {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.hotel-card__price-alert {
+  font-size: 10px;
+  color: #ef4444;
+  font-weight: 700;
+  margin: 4px 0 10px;
+  text-align: right;
+}
+.hotel-card__cta {
+  background: var(--traveloka-blue);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-standard);
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.15s;
+}
+.hotel-card__cta:hover {
+  background: var(--traveloka-blue-dark);
+}
+.hotel-card__cta:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+.hotel-card__cta:disabled:hover {
+  background: #cbd5e1;
+}
+.hotel-card__quota-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fee2e2;
+  color: #ef4444;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+  align-self: flex-start;
+}
+
+.empty-state {
+  font-size: 14px;
+  color: var(--text-muted);
+  padding: 48px 0;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: #1e1a15; /* Even darker charcoal for premium contrast */
+  color: rgba(255, 255, 255, 0.7);
+  padding: 56px 24px 40px;
+  margin-top: 64px;
+  border-top: 2px solid var(--traveloka-blue); /* Gold border top */
+}
+.footer__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+}
+.footer__brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer__brand {
+  display: flex;
+  align-items: center;
+}
+.footer__desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+.footer__links-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer__links-title {
+  color: var(--traveloka-blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__links a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+.footer__links a:hover {
+  color: var(--traveloka-blue);
+}
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer__copy {
+  font-size: 13px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+.footer__payment-methods {
+  display: flex;
+  gap: 12px;
+}
+.payment-badge {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* ============ MODAL ============ */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 100;
+  padding: 40px 16px;
+  overflow-y: auto;
+}
+.modal.is-open {
+  display: flex;
+}
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(4px);
+}
+.modal__panel {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-large);
+  max-width: 480px;
+  width: 100%;
+  padding: 32px 28px 28px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+  animation: modalFadeIn 0.2s ease-out;
+}
+@keyframes modalFadeIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-gray);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+.modal__close:hover {
+  background: var(--border-color);
+  color: var(--text-dark);
+}
+.modal__eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--traveloka-blue);
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.modal__hotel-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--text-dark);
+}
+.modal__hotel-area {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 20px;
+}
+
+.ticket {
+  display: flex;
+  background: var(--traveloka-blue-light);
+  border-radius: var(--radius-standard);
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid rgba(197, 160, 89, 0.15);
+}
+.ticket__seg {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+}
+.ticket__seg--mid {
+  align-items: center;
+  border-left: 1px dashed rgba(197, 160, 89, 0.25);
+  border-right: 1px dashed rgba(197, 160, 89, 0.25);
+  flex: 0 0 90px;
+  justify-content: center;
+}
+.ticket__label {
+  font-size: 11px;
+  color: var(--traveloka-blue-dark);
+  font-weight: 600;
+}
+.ticket__value {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.modal__total {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  color: var(--text-dark);
+}
+.modal__total strong {
+  color: var(--traveloka-orange);
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.guest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.field span {
+  color: var(--text-muted);
+}
+.field input {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-standard);
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-dark);
+  transition: border-color 0.15s;
+}
+.field input:focus {
+  outline: none;
+  border-color: var(--traveloka-blue);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+.field--payment {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+.payment-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-standard);
+  padding: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.payment-option:has(input:checked) {
+  border-color: var(--traveloka-blue);
+  background: var(--traveloka-blue-light);
+}
+.payment-option input {
+  grid-row: 1 / 3;
+  align-self: center;
+  accent-color: var(--traveloka-blue);
+}
+.payment-option__title {
+  font-weight: 700;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+.payment-option__desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.modal__step[hidden] {
+  display: none;
+}
+.modal__hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 14px 0 20px;
+}
+
+.booking-code {
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.05em;
+  background: var(--traveloka-blue-light);
+  color: var(--traveloka-blue-dark);
+  border: 1.5px dashed rgba(197, 160, 89, 0.4);
+  border-radius: var(--radius-standard);
+  padding: 18px;
+  text-align: center;
+  margin: 8px 0 20px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .topbar__inner {
+    padding: 12px 16px;
+  }
+  .topbar__tag {
+    display: none;
+  }
+  
+  .hero {
+    padding: 32px 16px 48px;
+  }
+  .hero__title {
+    font-size: clamp(20px, 5.5vw, 24px);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero__sub {
+    font-size: 13.5px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  
+  .search-labels {
+    display: none;
+  }
+  .search-tabs {
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .search-tab {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  .searchbar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+    border-radius: var(--radius-standard);
+  }
+  .searchbar__field {
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: var(--radius-standard);
+    border: 1px solid var(--border-color);
+  }
+  .searchbar__field:not(:nth-last-child(2))::after {
+    display: none;
+  }
+  .searchbar__btn {
+    width: 100%;
+    height: 44px;
+    margin: 0;
+    border-radius: var(--radius-standard);
+  }
+  .hero__nights {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+
+  .results {
+    padding: 24px 16px;
+  }
+  .results__head h2 {
+    font-size: 18px;
+  }
+
+  .hotel-card {
+    grid-template-columns: 1fr;
+  }
+  .hotel-card__gallery {
+    padding: 0;
+  }
+  .hotel-card__media {
+    border-radius: var(--radius-standard) var(--radius-standard) 0 0;
+    aspect-ratio: 16/9;
+  }
+  .hotel-card__badge {
+    top: 12px;
+    left: 12px;
+  }
+  .hotel-card__thumbs {
+    display: none;
+  }
+  
+  .hotel-card__body {
+    padding: 16px 16px 12px;
+    gap: 6px;
+  }
+  .hotel-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .hotel-card__rating-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .hotel-card__reviews {
+    margin-top: 0;
+  }
+  
+  .hotel-card__action-panel {
+    border-left: none;
+    border-top: 1px dashed var(--border-color);
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2px;
+    background: #fafafa;
+  }
+  .hotel-card__promo-login {
+    display: none;
+  }
+  .hotel-card__price-original {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+  }
+  .hotel-card__price-promo {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+  }
+  .hotel-card__price-suffix {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+  .hotel-card__price-alert {
+    display: none;
+  }
+  .hotel-card__cta {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: auto;
+    min-width: 110px;
+    align-self: center;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand__title {
+    font-size: 16px;
+  }
+  .brand__subtitle {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .brand__logo-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+  .modal {
+    padding: 0;
+  }
+  .modal__panel {
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 44px 20px 24px;
+  }
+  .modal__close {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* ============ VIRTUAL ASSISTANT CHATBOT ============ */
+.chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  font-family: var(--font-body);
+}
+.chat-widget__toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--traveloka-blue);
+  border: none;
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.4);
+  color: var(--white);
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.chat-widget__toggle:hover {
+  transform: scale(1.08);
+  background: var(--traveloka-blue-dark);
+}
+.chat-widget__toggle:active {
+  transform: scale(0.95);
+}
+.chat-widget__pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid var(--traveloka-blue);
+  animation: chatPulse 2s infinite;
+  pointer-events: none;
+}
+@keyframes chatPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+.chat-window {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 360px;
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--white);
+  border-radius: var(--radius-large);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+.chat-window[hidden] {
+  display: none !important;
+  transform: scale(0.8);
+  opacity: 0;
+}
+.chat-window__header {
+  background: var(--traveloka-blue);
+  color: var(--white);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.chat-window__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-window__avatar {
+  font-size: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-window__title-container {
+  display: flex;
+  flex-direction: column;
+}
+.chat-window__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.chat-window__status {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+.chat-window__status-dot {
+  width: 7px;
+  height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: inline-block;
+}
+.chat-window__close {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 20px;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+  padding: 4px;
+}
+.chat-window__close:hover {
+  opacity: 1;
+}
+.chat-window__body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8fafc;
+  scroll-behavior: smooth;
+}
+.chat-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+.chat-msg--bot {
+  background: var(--white);
+  color: var(--text-dark);
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+}
+.chat-msg--bot strong {
+  color: var(--traveloka-blue-dark);
+}
+.chat-msg--user {
+  background: var(--traveloka-blue);
+  color: var(--white);
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 2px 4px rgba(197, 160, 89, 0.2);
+}
+.chat-window__quick-replies {
+  padding: 10px 12px;
+  background: #f8fafc;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid #f1f5f9;
+}
+.chat-reply-btn {
+  background: var(--white);
+  border: 1.5px solid var(--traveloka-blue);
+  color: var(--traveloka-blue-dark);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.chat-reply-btn:hover {
+  background: var(--traveloka-blue-light);
+  transform: translateY(-1px);
+}
+.chat-reply-btn:active {
+  transform: translateY(0);
+}
+.chat-window__footer {
+  padding: 12px;
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 8px;
+}
+.chat-window__footer input {
+  flex: 1;
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.chat-window__footer input:focus {
+  border-color: var(--traveloka-blue);
+}
+.chat-window__send {
+  background: var(--traveloka-blue);
+  color: var(--white);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.chat-window__send:hover {
+  background: var(--traveloka-blue-dark);
+}
+.chat-action-btn {
+  display: inline-block;
+  background: var(--traveloka-orange);
+  color: var(--white);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-standard);
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 8px;
+  text-align: center;
+  transition: background 0.15s;
+}
+.chat-action-btn:hover {
+  background: var(--traveloka-orange-hover);
+}
+
+/* Mobile responsive for chat window */
+@media (max-width: 480px) {
+  .chat-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .chat-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+    bottom: 0;
+  }
+  .chat-widget__toggle {
+    width: 54px;
+    height: 54px;
+    font-size: 24px;
+  }
+}
+
+/* ============ SECTION DESTINASI FAVORIT ============ */
+.destinasi {
+  padding: 56px 24px;
+  background: var(--white);
+}
+.destinasi__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.destinasi__head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.destinasi__eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--traveloka-blue-dark);
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.destinasi__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+.destinasi__sub {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.destinasi__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.destinasi-card {
+  background: var(--white);
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.destinasi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(197, 160, 89, 0.18);
+  border-color: rgba(197, 160, 89, 0.3);
+}
+.destinasi-card__media {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+.destinasi-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.destinasi-card:hover .destinasi-card__media img {
+  transform: scale(1.08);
+}
+.destinasi-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.4) 100%);
+}
+.destinasi-card__content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+.destinasi-card__tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--traveloka-blue-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.destinasi-card__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+.destinasi-card__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ============ DETAIL DESTINASI SECTION ============ */
+.destinasi-detail {
+  padding: 56px 24px;
+  background: var(--bg-gray);
+  min-height: 50vh;
+}
+.destinasi-detail__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.destinasi-detail__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.btn-back {
+  background: transparent;
+  border: 1.5px solid var(--traveloka-blue);
+  color: var(--traveloka-blue-dark);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.btn-back:hover {
+  background: var(--traveloka-blue-light);
+  transform: translateX(-4px);
+}
+.destinasi-detail__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.destinasi-detail__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(20px, 3.5vw, 26px);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+.destinasi-detail__desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* responsive media queries */
+@media (max-width: 900px) {
+  .destinasi__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .destinasi__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .destinasi {
+    padding: 40px 16px;
+  }
+  .destinasi-detail {
+    padding: 40px 16px;
+  }
+}
+
+/* ============ CUSTOM TRAVELOKA DATEPICKER ============ */
+.search-container {
+  position: relative; /* Ensure picker is positioned relative to the search box container */
+}
+
+.date-display-wrapper {
+  cursor: pointer;
+  width: 100%;
+}
+
+.traveloka-datepicker {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  right: 0;
+  margin: 8px auto;
+  width: 100%;
+  max-width: 660px;
+  background: var(--white);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  z-index: 1000;
+  padding: 20px;
+  animation: pickerFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes pickerFadeIn {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.datepicker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px dashed var(--border-color);
+  padding-bottom: 14px;
+}
+
+.datepicker-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.datepicker-summary__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.summary-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.datepicker-summary__sep {
+  color: var(--traveloka-blue);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.datepicker-close-btn {
+  background: var(--traveloka-orange);
+  color: var(--white);
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: var(--radius-standard);
+  transition: background-color 0.15s;
+}
+
+.datepicker-close-btn:hover {
+  background: var(--traveloka-orange-hover);
+}
+
+.datepicker-calendars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.datepicker-month {
+  display: flex;
+  flex-direction: column;
+}
+
+.datepicker-month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  height: 32px;
+}
+
+.datepicker-month-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.datepicker-nav-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--text-dark);
+  transition: all 0.2s;
+}
+
+.datepicker-nav-btn:hover {
+  background: var(--bg-gray);
+  border-color: var(--text-muted);
+}
+
+.datepicker-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 6px;
+}
+
+.datepicker-weekdays span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.datepicker-weekdays span.sun {
+  color: var(--traveloka-orange);
+}
+
+.datepicker-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 2px;
+}
+
+.datepicker-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+  user-select: none;
+  border-radius: 4px;
+}
+
+.datepicker-day:hover:not(.disabled) {
+  background: var(--bg-gray);
+  color: var(--traveloka-blue-dark);
+}
+
+.datepicker-day.disabled {
+  color: #cbd5e1;
+  cursor: not-allowed;
+  font-weight: 400;
+}
+
+.datepicker-day.empty {
+  cursor: default;
+}
+
+/* Range highlighting */
+.datepicker-day.selected-start {
+  background: var(--traveloka-blue) !important;
+  color: var(--white) !important;
+  border-radius: 4px 0 0 4px !important;
+}
+
+.datepicker-day.selected-end {
+  background: var(--traveloka-blue) !important;
+  color: var(--white) !important;
+  border-radius: 0 4px 4px 0 !important;
+}
+
+.datepicker-day.selected-start.selected-end {
+  border-radius: 4px !important;
+}
+
+.datepicker-day.in-range {
+  background: var(--traveloka-blue-light) !important;
+  color: var(--traveloka-blue-dark) !important;
+  border-radius: 0 !important;
+}
+
+.datepicker-day.today::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  height: 4px;
+  background: var(--traveloka-orange);
+  border-radius: 50%;
+}
+
+.datepicker-day.selected-start::after,
+.datepicker-day.selected-end::after {
+  background: var(--white);
+}
+
+.mobile-only-nav {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.desktop-only-nav {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Responsive calendar */
+@media (max-width: 768px) {
+  .mobile-only-nav {
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  .desktop-only-nav {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .traveloka-datepicker {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: none !important;
+    overflow-y: auto !important;
+    background: var(--white) !important;
+    z-index: 2000 !important;
+    padding: 16px !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+  .datepicker-calendars {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============ CUSTOM TRAVELOKA GUESTSPICKER ============ */
+.traveloka-guestspicker {
+  position: absolute;
+  top: 105%;
+  left: auto;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  background: var(--white);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  z-index: 1000;
+  padding: 20px;
+  animation: pickerFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.guestspicker-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.guestspicker-row:last-of-type {
+  border-bottom: none;
+}
+
+.guestspicker-label-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guestspicker-icon {
+  font-size: 20px;
+  color: var(--traveloka-blue);
+}
+
+.guestspicker-label-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.guestspicker-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.guestspicker-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.guestspicker-counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.counter-btn {
+  background: transparent;
+  border: 1.5px solid var(--traveloka-blue);
+  color: var(--traveloka-blue-dark);
+  font-size: 16px;
+  font-weight: 700;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.counter-btn:hover {
+  background: var(--traveloka-blue-light);
+}
+.counter-btn:active {
+  transform: scale(0.92);
+}
+.counter-btn:disabled {
+  border-color: #e2e8f0;
+  color: #cbd5e1;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.counter-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+  width: 20px;
+  text-align: center;
+}
+
+.guestspicker-footer {
+  padding-top: 8px;
+}
+
+/* Mobile responsive for guests picker */
+@media (max-width: 768px) {
+  .traveloka-guestspicker {
+    position: fixed !important;
+    top: 50% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    transform: translateY(-50%) !important;
+    border-radius: var(--radius-large) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.25) !important;
+    z-index: 2100 !important;
+    padding: 20px !important;
+  }
+}
+
+

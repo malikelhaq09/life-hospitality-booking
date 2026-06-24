@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LIFE Hospitality — Direct Booking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__logo-wrapper">
+        <img src="img/logo-life-hospitality.png" alt="Life Hospitality Logo" class="brand__logo-img">
+      </div>
+      <div class="brand__text">
+        <span class="brand__title">LIFE Hospitality</span>
+        <span class="brand__subtitle">Hotel Group</span>
+      </div>
+    </div>
+    <div class="topbar__tag">Direct Booking — Life Hospitality Group</div>
+  </div>
+</header>
+
+<!-- ============ HERO / SEARCH ============ -->
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Temukan Hotel Terbaik di Makassar</p>
+    <h1 class="hero__title">14 Hotel Pilihan dalam Satu Platform Reservasi Resmi <span style="white-space:nowrap">Life Hospitality Group</span></h1>
+    <p class="hero__sub">Harga terbaik, konfirmasi cepat, dan kemudahan booking langsung ke hotel.</p>
+
+    <div class="search-container">
+      <div class="search-tabs">
+        <button type="button" class="search-tab active">🏨 Hotel</button>
+      </div>
+      
+      <div class="search-labels">
+        <span class="search-label">Kota, tujuan, atau nama hotel</span>
+        <span class="search-label">Tanggal Check-in & Check-out</span>
+        <span class="search-label">Tamu dan Kamar</span>
+      </div>
+      
+      <form class="searchbar" id="searchForm">
+        <div class="searchbar__field searchbar__field--location">
+          <span class="searchbar__icon">📍</span>
+          <input type="text" id="destination" placeholder="Kota, hotel, tempat wisata" value="Makassar, Indonesia" readonly>
+        </div>
+        <div class="searchbar__field searchbar__field--date" id="datePickerTrigger" style="cursor: pointer;">
+          <span class="searchbar__icon">📅</span>
+          <div class="date-display-wrapper" style="display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--text-dark); width: 100%; user-select: none;">
+            <span id="checkinDisplay" style="white-space: nowrap;">Pilih Tanggal</span>
+            <span class="date-display-sep" style="color: var(--text-muted); font-weight: 500;">-</span>
+            <span id="checkoutDisplay" style="white-space: nowrap;">Pilih Tanggal</span>
+          </div>
+          <input type="hidden" id="checkin" name="checkin" required>
+          <input type="hidden" id="checkout" name="checkout" required>
+        </div>
+        <div class="searchbar__field searchbar__field--guests" id="guestsPickerTrigger" style="cursor: pointer;">
+          <span class="searchbar__icon">👥</span>
+          <input type="text" id="guests" value="2 Dewasa, 0 Anak, 1 Kamar" readonly style="cursor: pointer;">
+        </div>
+        <button type="submit" class="searchbar__btn" aria-label="Cari">🔍</button>
+      </form>
+
+      <!-- Custom Datepicker Popover (Traveloka Style) -->
+      <div class="traveloka-datepicker" id="travelokaDatePicker" style="display: none;">
+        <div class="datepicker-header">
+          <div class="datepicker-summary">
+            <div class="datepicker-summary__item">
+              <span class="summary-label">Check-In</span>
+              <span class="summary-value" id="pickerCheckinVal">Pilih Tanggal</span>
+            </div>
+            <div class="datepicker-summary__sep">➔</div>
+            <div class="datepicker-summary__item">
+              <span class="summary-label">Check-Out</span>
+              <span class="summary-value" id="pickerCheckoutVal">Pilih Tanggal</span>
+            </div>
+          </div>
+          <button type="button" class="datepicker-close-btn" id="pickerCloseBtn">Selesai</button>
+        </div>
+        <div class="datepicker-calendars">
+          <!-- Calendar Month 1 -->
+          <div class="datepicker-month">
+            <div class="datepicker-month-header">
+              <button type="button" class="datepicker-nav-btn datepicker-nav-btn--prev" id="pickerPrevBtn">❮</button>
+              <span class="datepicker-month-title" id="monthTitleLeft">Bulan 1</span>
+              <button type="button" class="datepicker-nav-btn datepicker-nav-btn--next mobile-only-nav" id="pickerNextBtnMobile">❯</button>
+            </div>
+            <div class="datepicker-weekdays">
+              <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span class="sun">Min</span>
+            </div>
+            <div class="datepicker-days" id="daysContainerLeft"></div>
+          </div>
+          <!-- Calendar Month 2 -->
+          <div class="datepicker-month">
+            <div class="datepicker-month-header">
+              <button type="button" class="datepicker-nav-btn datepicker-nav-btn--prev mobile-only-nav" id="pickerPrevBtnMobile">❮</button>
+              <span class="datepicker-month-title" id="monthTitleRight">Bulan 2</span>
+              <button type="button" class="datepicker-nav-btn datepicker-nav-btn--next" id="pickerNextBtn">❯</button>
+            </div>
+            <div class="datepicker-weekdays">
+              <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span class="sun">Min</span>
+            </div>
+            <div class="datepicker-days" id="daysContainerRight"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Guests Picker Popover (Traveloka Style) -->
+      <div class="traveloka-guestspicker" id="guestsPicker" style="display: none;">
+        <div class="guestspicker-row">
+          <div class="guestspicker-label-group">
+            <span class="guestspicker-icon">🛏️</span>
+            <div class="guestspicker-label-info">
+              <span class="guestspicker-title">Kamar</span>
+              <span class="guestspicker-subtitle">Jumlah kamar dipesan</span>
+            </div>
+          </div>
+          <div class="guestspicker-counter">
+            <button type="button" class="counter-btn" id="btnDecRooms">-</button>
+            <span class="counter-val" id="valRooms">1</span>
+            <button type="button" class="counter-btn" id="btnIncRooms">+</button>
+          </div>
+        </div>
+        
+        <div class="guestspicker-row">
+          <div class="guestspicker-label-group">
+            <span class="guestspicker-icon">👤</span>
+            <div class="guestspicker-label-info">
+              <span class="guestspicker-title">Dewasa</span>
+              <span class="guestspicker-subtitle">Usia 12 tahun ke atas</span>
+            </div>
+          </div>
+          <div class="guestspicker-counter">
+            <button type="button" class="counter-btn" id="btnDecAdults">-</button>
+            <span class="counter-val" id="valAdults">2</span>
+            <button type="button" class="counter-btn" id="btnIncAdults">+</button>
+          </div>
+        </div>
+
+        <div class="guestspicker-row">
+          <div class="guestspicker-label-group">
+            <span class="guestspicker-icon">👶</span>
+            <div class="guestspicker-label-info">
+              <span class="guestspicker-title">Anak-anak</span>
+              <span class="guestspicker-subtitle">Usia 0 - 11 tahun</span>
+            </div>
+          </div>
+          <div class="guestspicker-counter">
+            <button type="button" class="counter-btn" id="btnDecKids">-</button>
+            <span class="counter-val" id="valKids">0</span>
+            <button type="button" class="counter-btn" id="btnIncKids">+</button>
+          </div>
+        </div>
+
+        <div class="guestspicker-footer">
+          <button type="button" class="datepicker-close-btn" id="btnGuestsDone" style="width: 100%;">Selesai</button>
+        </div>
+      </div>
+    </div>
+    <p class="hero__nights" id="nightsInfo" aria-live="polite"></p>
+  </div>
+</section>
+
+
+<!-- ============ DESTINASI FAVORIT ============ -->
+<section class="destinasi" id="destinasiSection">
+  <div class="destinasi__inner">
+    <div class="destinasi__head">
+      <p class="destinasi__eyebrow">Destinasi Terpopuler</p>
+      <h2 class="destinasi__title">Hotel Berdasarkan Destinasi Favorit</h2>
+      <p class="destinasi__sub">Temukan pilihan akomodasi terbaik LIFE Hospitality Group yang berdekatan dengan tempat wisata, perbelanjaan, dan kuliner terpopuler di Makassar.</p>
+    </div>
+    
+    <div class="destinasi__grid">
+      <!-- Card Pantai Losari -->
+      <div class="destinasi-card" data-destination="losari">
+        <div class="destinasi-card__media">
+          <img src="img/losari-dest.png" alt="Pantai Losari Makassar">
+          <div class="destinasi-card__overlay"></div>
+        </div>
+        <div class="destinasi-card__content">
+          <span class="destinasi-card__tag">🌴 Wisata Bahari</span>
+          <h3 class="destinasi-card__title">Dekat Pantai Losari</h3>
+          <p class="destinasi-card__desc">Nikmati indahnya sunset Makassar dan kuliner Pisang Epe khas Losari.</p>
+        </div>
+      </div>
+      
+      <!-- Card Pusat Perbelanjaan -->
+      <div class="destinasi-card" data-destination="mall">
+        <div class="destinasi-card__media">
+          <img src="img/mall-dest.png" alt="Pusat Perbelanjaan Nipah Mall / Mall Panakkukang">
+          <div class="destinasi-card__overlay"></div>
+        </div>
+        <div class="destinasi-card__content">
+          <span class="destinasi-card__tag">🛍️ Belanja & Hiburan</span>
+          <h3 class="destinasi-card__title">Dekat Pusat Belanja</h3>
+          <p class="destinasi-card__desc">Akses mudah ke pusat perbelanjaan terbesar, bioskop, dan area retail premium.</p>
+        </div>
+      </div>
+      
+      <!-- Card Pusat Kuliner & Cafe -->
+      <div class="destinasi-card" data-destination="kuliner">
+        <div class="destinasi-card__media">
+          <img src="img/kuliner-dest.png" alt="Kuliner Makassar">
+          <div class="destinasi-card__overlay"></div>
+        </div>
+        <div class="destinasi-card__content">
+          <span class="destinasi-card__tag">🍜 Surga Kuliner</span>
+          <h3 class="destinasi-card__title">Dekat Pusat Kuliner</h3>
+          <p class="destinasi-card__desc">Jelajahi kelezatan Coto Makassar, Konro Bakar, dan cafe estetik hits terdekat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETAIL DESTINASI ============ -->
+<section class="destinasi-detail" id="destinationDetailSection" style="display: none;">
+  <div class="destinasi-detail__inner">
+    <div class="destinasi-detail__header">
+      <button class="btn-back" id="backToHomeBtn">← Kembali ke Beranda</button>
+      <div class="destinasi-detail__meta">
+        <h2 class="destinasi-detail__title" id="destDetailTitle">Hotel Dekat Pantai Losari</h2>
+        <p class="destinasi-detail__desc" id="destDetailDesc">Menampilkan daftar hotel pilihan terbaik dekat Pantai Losari dengan jaminan harga langsung.</p>
+      </div>
+    </div>
+    
+    <div class="hotel-grid" id="destHotelGrid">
+      <!-- Diisi secara dinamis -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="results" id="resultsSection">
+  <div class="results__inner">
+    <div class="results__head">
+      <h2 id="resultsTitle">Hotel tersedia</h2>
+      <span class="results__count" id="resultsCount"></span>
+    </div>
+    <div class="hotel-grid" id="hotelGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__main">
+      <div class="footer__brand-block">
+        <div class="footer__brand">
+          <div class="brand__logo-wrapper" style="width: 32px; height: 32px; overflow: hidden; display: flex; align-items: flex-start; justify-content: center;">
+            <img src="img/logo-life-hospitality.png" alt="Life Hospitality Logo" class="brand__logo-img" style="width: 100%; height: 155%; object-fit: cover; object-position: top center; filter: brightness(0) invert(1);">
+          </div>
+          <div class="brand__text" style="text-align: left; display: flex; flex-direction: column; line-height: 1.15; margin-left: 8px;">
+            <span class="brand__title" style="font-size: 16px; color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: 0.5px;">LIFE Hospitality</span>
+            <span class="brand__subtitle" style="font-size: 8px; color: rgba(255, 255, 255, 0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;">Hotel Group</span>
+          </div>
+        </div>
+        <p class="footer__desc">Pemesanan cepat dan aman, dikonfirmasi langsung oleh tim admin via WhatsApp. Nikmati jaminan harga terbaik langsung dari hotel resmi kami.</p>
+      </div>
+      <div class="footer__links-block">
+        <span class="footer__links-title">Layanan Tamu</span>
+        <ul class="footer__links">
+          <li><a href="#" class="chat-trigger-faq" data-faq="harga">🏷️ Jaminan Harga Terbaik</a></li>
+          <li><a href="#" class="chat-trigger-faq" data-faq="wa">📞 Kontak WhatsApp</a></li>
+          <li><a href="#" class="chat-trigger-faq" data-faq="bayar">💳 Metode Pembayaran</a></li>
+          <li><a href="dashboard.html" target="_blank">🔑 Staff Portal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">Copyright &copy; <span id="copyrightYear">2026</span> Life Hospitality. All rights reserved.</p>
+      <div class="footer__payment-methods">
+        <span class="payment-badge">💳 Pay at Hotel</span>
+        <span class="payment-badge">📱 QRIS</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal" id="bookingModal" aria-hidden="true">
+  <div class="modal__overlay" id="modalOverlay"></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalHotelName">
+    <button class="modal__close" id="modalClose" aria-label="Tutup">✕</button>
+
+    <!-- STEP 1: FORM -->
+    <div class="modal__step" id="stepForm">
+      <p class="modal__eyebrow">Pemesanan kamar</p>
+      <h3 class="modal__hotel-name" id="modalHotelName"></h3>
+      <p class="modal__hotel-area" id="modalHotelArea"></p>
+
+      <div class="ticket" id="modalTicket">
+        <div class="ticket__seg">
+          <span class="ticket__label">Check-in</span>
+          <span class="ticket__value" id="ticketCheckin">—</span>
+        </div>
+        <div class="ticket__seg ticket__seg--mid">
+          <span class="ticket__label">Malam</span>
+          <span class="ticket__value" id="ticketNights">—</span>
+        </div>
+        <div class="ticket__seg">
+          <span class="ticket__label">Check-out</span>
+          <span class="ticket__value" id="ticketCheckout">—</span>
+        </div>
+      </div>
+
+      <p class="modal__total">Estimasi total: <strong id="modalTotal">Rp 0</strong></p>
+      <p id="modalRoomsInfo" style="display: none; font-size: 12px; color: var(--text-muted); margin: -10px 0 12px; text-align: center;"></p>
+
+      <form id="guestForm" class="guest-form">
+        <label class="field">
+          <span>Nama lengkap</span>
+          <input type="text" name="name" required placeholder="Nama sesuai identitas">
+        </label>
+        <label class="field">
+          <span>Nomor HP / WhatsApp</span>
+          <input type="tel" name="phone" required placeholder="08xxxxxxxxxx">
+        </label>
+        <label class="field">
+          <span>Alamat email</span>
+          <input type="email" name="email" required placeholder="nama@email.com">
+        </label>
+
+        <fieldset class="field field--payment">
+          <span>Tipe kamar</span>
+          <div class="payment-options" id="roomOptionsContainer">
+            <!-- Dynamic room options rendered programmatically -->
+          </div>
+        </fieldset>
+
+        <fieldset class="field field--payment">
+          <span>Metode pembayaran</span>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="qris" required>
+              <span class="payment-option__title">QRIS</span>
+              <span class="payment-option__desc">Admin kirim kode QRIS &amp; validasi manual</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="hotel" required>
+              <span class="payment-option__title">Bayar di hotel</span>
+              <span class="payment-option__desc">Dapat kode booking, bayar saat tiba</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn--primary btn--block">Lanjutkan ke WhatsApp</button>
+      </form>
+    </div>
+
+    <!-- STEP 2: CONFIRMATION (only shown for "bayar di hotel" to reveal booking code first) -->
+    <div class="modal__step" id="stepConfirm" hidden>
+      <p class="modal__eyebrow">Kode booking kamu</p>
+      <h3>Tunjukkan kode ini saat check-in</h3>
+      <div class="booking-code" id="bookingCodeDisplay">LH-0000</div>
+      <p class="modal__hint">Simpan kode ini. Pembayaran dilakukan langsung di hotel saat kamu tiba. Lanjutkan ke WhatsApp untuk konfirmasi ke admin.</p>
+      <button class="btn btn--primary btn--block" id="goToWhatsapp">Lanjutkan ke WhatsApp</button>
+  </div>
+</div>
+</div>
+
+<!-- ============ CHATBOT WIDGET ============ -->
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-widget__toggle" id="chatToggle" aria-label="Buka Asisten Virtual">
+    <span class="chat-widget__pulse"></span>
+    <span class="chat-widget__icon">💬</span>
+  </button>
+  
+  <div class="chat-window" id="chatWindow" hidden>
+    <div class="chat-window__header">
+      <div class="chat-window__brand">
+        <span class="chat-window__avatar">🛎️</span>
+        <div class="chat-window__title-container">
+          <h4 class="chat-window__title">Asisten LIFE Hospitality</h4>
+          <span class="chat-window__status"><span class="chat-window__status-dot"></span> Online</span>
+        </div>
+      </div>
+      <button class="chat-window__close" id="chatClose" aria-label="Tutup">✕</button>
+    </div>
+    
+    <div class="chat-window__body" id="chatBody"></div>
+    
+    <div class="chat-window__quick-replies" id="chatQuickReplies"></div>
+    
+    <form class="chat-window__footer" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Tulis pertanyaan Anda..." autocomplete="off" required>
+      <button type="submit" class="chat-window__send" aria-label="Kirim">➔</button>
+    </form>
+  </div>
+</div>
+
+<script src="hotels-config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
