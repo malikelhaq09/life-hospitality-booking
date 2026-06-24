@@ -511,6 +511,18 @@ select option, .edit-input option {
   box-shadow: 0 0 0 3px var(--dash-gold-glow);
 }
 
+.quota-date-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(197, 160, 89, 0.07);
+  border: 1px solid rgba(197, 160, 89, 0.2);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
 /* Table styling - premium card-like design */
 .table-container {
   width: 100%;
@@ -679,6 +691,10 @@ select option, .edit-input option {
 
 /* Responsive Styles */
 @media (max-width: 900px) {
+  .dash-container {
+    padding: 16px;
+    gap: 20px;
+  }
   .dash-header {
     flex-direction: column;
     gap: 16px;
@@ -688,18 +704,143 @@ select option, .edit-input option {
   .dash-header__user {
     align-self: stretch;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
   }
   .panel-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 16px;
   }
   .panel-filters {
     width: 100%;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .filter-group {
+    width: 100%;
   }
   .filter-group select, .filter-group input {
-    min-width: 100%;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .dash-header__user {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .dash-header__welcome {
+    text-align: center;
+  }
+  .reset-btn, .logout-btn {
+    width: 100%;
+    margin-right: 0 !important;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .dash-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: var(--radius-standard);
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  .dash-tab {
+    width: 100%;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  .dash-panel {
+    padding: 16px;
+    gap: 16px;
+  }
+  .panel-header div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .panel-header div:last-child button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Daily Recap Bar Mobile */
+  .recap-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .recap-bar__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+  .recap-bar__stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+  }
+  .recap-bar__revenue {
+    border-top: 1px dashed var(--dash-border);
+    padding-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Quota Date Bar Mobile */
+  .quota-date-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .quota-date-bar input[type="date"] {
+    width: 100%;
+  }
+  .quota-date-bar button {
+    width: 100%;
+  }
+  .quota-date-bar div {
+    margin-left: 0 !important;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+  }
+
+  /* Add Room Form Grid Mobile */
+  .form-grid-3, .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+  .stat-card {
+    padding: 16px;
+    gap: 12px;
+  }
+  .stat-card__icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .stat-card__value {
+    font-size: 26px;
   }
 }
 
