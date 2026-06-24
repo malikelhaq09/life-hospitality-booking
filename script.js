@@ -554,20 +554,20 @@
           }
 
           return `
-            <div class="hotel-card__room-row" data-room-img="${rt.image}" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #f1f5f9; gap: 16px; transition: background 0.2s;">
-              <div style="display: flex; gap: 16px; align-items: center; flex: 1;">
-                <img src="${rt.image}" alt="${rt.name}" style="width: 80px; height: 55px; object-fit: cover; border-radius: 6px; background: #e2e8f0; cursor: pointer;" class="room-row-img-click">
-                <div style="flex: 1;">
-                  <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--text-dark);">${rt.name}</h4>
-                  <p style="margin: 3px 0 0; font-size: 12px; color: var(--text-muted); line-height: 1.4;">${rt.desc || 'Fasilitas kamar lengkap dan nyaman untuk istirahat Anda.'}</p>
+            <div class="hotel-card__room-row" data-room-img="${rt.image}">
+              <div class="hotel-card__room-left">
+                <img src="${rt.image}" alt="${rt.name}" class="hotel-card__room-img room-row-img-click">
+                <div class="hotel-card__room-details">
+                  <h4 class="hotel-card__room-name">${rt.name}</h4>
+                  <p class="hotel-card__room-desc">${rt.desc || 'Fasilitas kamar lengkap dan nyaman untuk istirahat Anda.'}</p>
                 </div>
               </div>
               
-              <div style="display: flex; align-items: center; gap: 20px; justify-content: flex-end; flex-wrap: wrap;">
-                <div style="text-align: right; min-width: 120px;">
-                  <span style="font-size: 11px; color: var(--text-muted); text-decoration: line-through; display: block; line-height: 1.1;">${formatRupiah(roomOriginalPrice)}${rooms > 1 ? ` × ${rooms}` : ''}</span>
-                  <span style="font-size: 16px; font-weight: 800; color: var(--traveloka-orange); display: block; line-height: 1.2;">${formatRupiah(rt.price)}</span>
-                  <span style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 1px;">/malam${rooms > 1 ? ` × ${rooms} kamar` : ''} · total ${formatRupiah(roomTotal)}</span>
+              <div class="hotel-card__room-right">
+                <div class="hotel-card__room-price-info">
+                  <span class="hotel-card__room-price-original">${formatRupiah(roomOriginalPrice)}${rooms > 1 ? ` × ${rooms}` : ''}</span>
+                  <span class="hotel-card__room-price-promo">${formatRupiah(rt.price)}</span>
+                  <span class="hotel-card__room-price-suffix">/malam${rooms > 1 ? ` × ${rooms} kamar` : ''} · total ${formatRupiah(roomTotal)}</span>
                   ${roomQuotaHTML}
                 </div>
                 <button class="hotel-card__cta room-book-btn" data-hotel-id="${h.id}" data-room-id="${rt.id}" ${isRoomSoldOut ? 'disabled' : ''} style="width: auto; padding: 8px 16px; font-size: 13px;">
@@ -647,7 +647,7 @@
                 <span class="hotel-card__promo-icon">🏷️</span>
                 <span>Jaminan harga termurah</span>
               </div>
-              <span class="hotel-card__price-suffix" style="margin-bottom: 2px;">Harga mulai dari</span>
+              <span class="hotel-card__price-label">Harga mulai dari</span>
               <span class="hotel-card__price-original">${formatRupiah(originalPrice)}${rooms > 1 ? ` × ${rooms}` : ''}</span>
               <span class="hotel-card__price-promo">${formatRupiah(h.price)}</span>
               <span class="hotel-card__price-suffix">/malam${rooms > 1 ? ` × ${rooms} kamar` : ''} · total ${formatRupiah(total)}</span>
@@ -657,8 +657,8 @@
           </div>
 
           <!-- Collapsible Rooms List Row -->
-          <div class="hotel-card__rooms" style="grid-column: 1 / -1; border-top: 1px solid var(--border-color); background: rgba(197, 160, 89, 0.02); display: none; flex-direction: column;">
-            <div style="background: rgba(197, 160, 89, 0.05); padding: 8px 16px; font-size: 12px; font-weight: 700; color: var(--traveloka-blue-dark); border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; gap: 6px;">
+          <div class="hotel-card__rooms" style="display: none;">
+            <div class="hotel-card__rooms-header">
               <span>🛏️ Pilihan Kamar Tersedia</span>
             </div>
             ${roomsHTML}

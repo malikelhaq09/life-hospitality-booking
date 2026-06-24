@@ -569,6 +569,12 @@ input{font-family:inherit;}
   color: var(--traveloka-orange);
   line-height: 1.1;
 }
+.hotel-card__price-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
 .hotel-card__price-suffix {
   font-size: 11px;
   color: var(--text-muted);
@@ -617,6 +623,105 @@ input{font-family:inherit;}
   border-radius: 4px;
   margin-top: 6px;
   align-self: flex-start;
+}
+
+/* Room selection section within card */
+.hotel-card__rooms {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--border-color);
+  background: rgba(197, 160, 89, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+.hotel-card__rooms-header {
+  background: rgba(197, 160, 89, 0.05);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--traveloka-blue-dark);
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hotel-card__room-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 16px;
+  transition: background 0.2s;
+}
+.hotel-card__room-row:hover {
+  background: rgba(197, 160, 89, 0.01);
+}
+.hotel-card__room-row:last-child {
+  border-bottom: none;
+}
+.hotel-card__room-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex: 1;
+}
+.hotel-card__room-img {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #e2e8f0;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.hotel-card__room-img:hover {
+  transform: scale(1.04);
+}
+.hotel-card__room-details {
+  flex: 1;
+}
+.hotel-card__room-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.hotel-card__room-desc {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.hotel-card__room-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.hotel-card__room-price-info {
+  text-align: right;
+  min-width: 120px;
+}
+.hotel-card__room-price-original {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  display: block;
+  line-height: 1.1;
+}
+.hotel-card__room-price-promo {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--traveloka-orange);
+  display: block;
+  line-height: 1.2;
+}
+.hotel-card__room-price-suffix {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: block;
+  margin-top: 1px;
 }
 
 .empty-state {
@@ -1071,6 +1176,9 @@ input{font-family:inherit;}
   .hotel-card__promo-login {
     display: none;
   }
+  .hotel-card__price-label {
+    display: none; /* Hide 'Harga mulai dari' label to prevent overlapping */
+  }
   .hotel-card__price-original {
     grid-column: 1;
     grid-row: 1;
@@ -1096,6 +1204,37 @@ input{font-family:inherit;}
     min-width: 110px;
     align-self: center;
     margin: 0;
+  }
+
+  /* Responsive Room Layout inside Cards */
+  .hotel-card__room-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+  .hotel-card__room-left {
+    gap: 12px;
+  }
+  .hotel-card__room-img {
+    width: 70px;
+    height: 50px;
+  }
+  .hotel-card__room-right {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 10px;
+    width: 100%;
+    gap: 12px;
+  }
+  .hotel-card__room-price-info {
+    text-align: left;
+    min-width: unset;
+  }
+  .hotel-card__room-price-promo {
+    font-size: 15px;
   }
 }
 
